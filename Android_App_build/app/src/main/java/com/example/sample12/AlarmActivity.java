@@ -1,6 +1,7 @@
 package com.example.sample12;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -22,6 +23,12 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class AlarmActivity extends AppCompatActivity {
+
+    public String name="";
+
+    public String id="";
+//
+//    public String age ="";
 
 
     private int counter = 10;
@@ -50,6 +57,15 @@ public class AlarmActivity extends AppCompatActivity {
         setContentView(R.layout.activity_alarm);
         timer_text= findViewById(R.id.timer);
 
+        Intent intent = getIntent();
+        final String userName = intent.getStringExtra("userName");
+//        final String userID = intent.getStringExtra("userID");
+//        final String userAge = intent.getStringExtra("userAge");
+
+        name = userName;
+//        id=userID;
+//        age = userAge;
+
 
 
         gps = new GpsTracker(AlarmActivity.this);
@@ -74,8 +90,10 @@ public class AlarmActivity extends AppCompatActivity {
                         return;
                     }
 
-                    SendSMS("01049365174", nowlo + "\n" + "낙상사고 발생");
-                    SendSMS("01088067574", nowlo + "\n" + "낙상사고 발생");
+                    SendSMS("01088067574", userName+"님에게 응급상황이 발생하였습니다. 신속하게 안전을 확인해 주세요" +
+                            "\n"+"사고 발생 주소: " +nowlo+"\n"+"환자 인적 사항: "+userName+",");
+                    SendSMS("01049365174", userName+"님에게 응급상황이 발생하였습니다. 신속하게 안전을 확인해 주세요" +
+                            "\n"+"사고 발생 주소: " +nowlo+"\n"+"환자 인적 사항: "+userName+",");
                     StopTimer();
                     finish();
                 }

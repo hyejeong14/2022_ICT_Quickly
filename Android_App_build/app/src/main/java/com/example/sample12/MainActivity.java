@@ -42,6 +42,8 @@ public class MainActivity extends AppCompatActivity
 
     public String id="";
 
+//    public String age ="";
+
     private String nowlocation = "";
 
     public int count = 0;
@@ -91,10 +93,13 @@ public class MainActivity extends AppCompatActivity
 
         Intent intent = getIntent();
         final String userName = intent.getStringExtra("userName");
-        final String userID = intent.getStringExtra("userID");
+//        final String userID = intent.getStringExtra("userID");
+//        final String userAge = intent.getStringExtra("userAge");
         textName.setText(userName);
         name = userName;
-        id=userID;
+//        id=userID;
+//        age = userAge;
+
 
 
         btn_call119.setOnClickListener(new View.OnClickListener(){
@@ -117,9 +122,11 @@ public class MainActivity extends AppCompatActivity
                 double longitude = gps2.getLongitude(); //경도
 
                 nowlocation = getCurrentAddress(latitude,longitude);
-                SendSMS("01088067574", userName+"님" +"\n"+ nowlocation + "낙상사고 발생");
+                SendSMS("01088067574", userName+"님에게 응급상황이 발생하였습니다. 신속하게 안전을 확인해 주세요" +
+                        "\n"+"사고 발생 주소: " +nowlocation+"\n"+"환자 인적 사항: "+userName+",");
                 Toast.makeText(getApplicationContext(),"낙상발생! 119에 신고합니다.",Toast.LENGTH_LONG).show();
-                SendSMS("01049365174", userName+"님" +"\n"+ nowlocation + "낙상사고 발생");
+                SendSMS("01049365174", userName+"님에게 응급상황이 발생하였습니다. 신속하게 안전을 확인해 주세요" +
+                        "\n"+"사고 발생 주소: " +nowlocation+"\n"+"환자 인적 사항: "+userName+",");
                 Toast.makeText(getApplicationContext(),"낙상발생! 119에 신고합니다.",Toast.LENGTH_LONG).show();
 
             }
