@@ -90,18 +90,6 @@
                 android:padding="10dp"
                 android:textColor="#ffffff"
                 android:textColorHint="#ffffff" />
-            <EditText
-                android:id="@+id/et_phone_number"
-                android:layout_width="280dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:background="@android:color/holo_blue_light"
-                android:hint="보호자 전화번호"
-                android:minHeight="48dp"
-                android:padding="10dp"
-                android:textColor="#ffffff"
-                android:textColorHint="#ffffff" />
 
             <EditText
                 android:id="@+id/et_num"
